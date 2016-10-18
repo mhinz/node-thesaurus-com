@@ -2,10 +2,10 @@ var request = require('request');
 var cheerio = require('cheerio');
 
 var args = process.argv.slice(2);
-var return_json = 0;
+var output_json = 0;
 
 if (args[0] == '-j') {
-    return_json = 1;
+    output_json = 1;
     args.shift();
 }
 
@@ -30,9 +30,15 @@ request(url, function(err, resp, body){
         return $(this).text();
     }).get().sort();
 
-    console.log('Synonyms: ' + synonyms.join(', '));
-
-    if (antonyms.length > 0) {
-        console.log('Antonyms: ' + antonyms.join(', '));
+    if (output_json) {
+        console.log(JSON.stringify({
+            synonyms: synonyms,
+            antonyms: antonyms
+        }));
+    } else {
+        console.log('Synonyms: ' + synonyms.join(', '));
+        if (antonyms.length > 0) {
+            console.log('Antonyms: ' + antonyms.join(', '));
+        }
     }
 });
