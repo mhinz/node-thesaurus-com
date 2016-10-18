@@ -12,20 +12,20 @@ var url = 'http://www.thesaurus.com/browse/' +
 
 request(url, function(err, resp, body){
     $ = cheerio.load(body, { ignoreWhitespace: true });
-    var text     = $('.synonym-description .txt').text();
-    var desc     = $('.synonym-description .ttl').text();
-    var synonyms = $('div.relevancy-list ul li a span.text').map(function(_i, _element){
-        return $(this).text();
-    }).get().sort().join(', ');
-    var antonyms = $('div.list-holder ul li a span.text').map(function(_i, _element){
-        return $(this).text();
-    }).get().sort().join(', ');
 
-    console.log('Type: '     + text);
-    console.log('Desc: '     + desc);
-    console.log('Synonyms: ' + synonyms);
+    var synonyms = $('div.relevancy-list ul li a span.text');
+    var synonyms = synonyms.map(function(_i, _element){
+        return $(this).text();
+    }).get().sort();
 
-    if (antonyms) {
-        console.log('Antonyms: ' + antonyms);
+    var antonyms = $('div.list-holder ul li a span.text');
+    var antonyms = antonyms.map(function(_i, _element){
+        return $(this).text();
+    }).get().sort();
+
+    console.log('Synonyms: ' + synonyms.join(', '));
+
+    if (antonyms.length > 0) {
+        console.log('Antonyms: ' + antonyms.join(', '));
     }
 });
