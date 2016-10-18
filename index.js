@@ -8,7 +8,7 @@ if (process.argv.length <= 2) {
 }
 
 var url = 'http://www.thesaurus.com/browse/' +
-encodeURIComponent(process.argv.slice(2).join(' '));
+    encodeURIComponent(process.argv.slice(2).join(' '));
 
 request(url, function(err, resp, body){
     $ = cheerio.load(body, { ignoreWhitespace: true });
