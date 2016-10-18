@@ -1,14 +1,21 @@
-if (process.argv.length <= 2) {
+var request = require('request');
+var cheerio = require('cheerio');
+
+var args = process.argv.slice(2);
+var return_json = 0;
+
+if (args[0] == '-j') {
+    return_json = 1;
+    args.shift();
+}
+
+if (args.length == 0) {
     var path = require('path');
     console.log('usage: ' + path.basename(process.argv[1]) + ' <query>');
     process.exit(1);
 }
 
-var request = require('request');
-var cheerio = require('cheerio');
-
-var url = 'http://www.thesaurus.com/browse/' +
-    encodeURIComponent(process.argv.slice(2).join(' '));
+var url = 'http://www.thesaurus.com/browse/' + encodeURIComponent(args.join(' '));
 
 request(url, function(err, resp, body){
     $ = cheerio.load(body, { ignoreWhitespace: true });
