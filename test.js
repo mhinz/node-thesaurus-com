@@ -1,7 +1,14 @@
 var request = require('request');
 var cheerio = require('cheerio');
 
-var url = 'http://www.thesaurus.com/browse/positive'
+if (process.argv.length <= 2) {
+    var path = require('path');
+    console.log('usage: ' + path.basename(process.argv[1]) + ' <query>');
+    process.exit(1);
+}
+
+var url = 'http://www.thesaurus.com/browse/' +
+encodeURIComponent(process.argv.slice(2).join(' '));
 
 request(url, function(err, resp, body){
     $ = cheerio.load(body, { ignoreWhitespace: true });
@@ -17,5 +24,8 @@ request(url, function(err, resp, body){
     console.log('Type: '     + text);
     console.log('Desc: '     + desc);
     console.log('Synonyms: ' + synonyms);
-    console.log('Antonyms: ' + antonyms);
+
+    if (antonyms) {
+        console.log('Antonyms: ' + antonyms);
+    }
 });
