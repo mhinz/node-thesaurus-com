@@ -1,6 +1,6 @@
 {
   "name": "thesaurus-com",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Lookup synonyms and antonyms from thesaurus.com.",
   "main": "index.js",
   "bin": {
