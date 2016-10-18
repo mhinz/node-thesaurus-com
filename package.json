@@ -1,8 +1,11 @@
 {
   "name": "thesaurus-com",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Lookup synonyms and antonyms from thesaurus.com.",
   "main": "index.js",
+  "bin": {
+      "tcom": "./index.js"
+  },
   "dependencies": {
     "cheerio": "^0.22.0",
     "request": "^2.75.0"
