@@ -1,3 +1,5 @@
+[![npm](https://img.shields.io/npm/v/thesaurus-com.svg)](https://www.npmjs.com/package/thesaurus-com)
+
 ## Description
 
 Use [thesaurus.com](http://www.thesaurus.com/) to look up synonyms and, if
