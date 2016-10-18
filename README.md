@@ -1,15 +1,15 @@
-Description:
+## Description
 
 Use [thesaurus.com](http://www.thesaurus.com/) to look up synonyms and, if
 available, antonyms.
 
-Installation:
+## Installation
 
 ```
-$ npm install -g thesaurus-com
+$ npm install thesaurus-com
 ```
 
-Usage:
+## Usage
 
 ```
 $ tcom always
