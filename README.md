@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/mhinz/node-thesaurus-com.svg?branch=master)](https://travis-ci.org/mhinz/node-thesaurus-com)
 [![npm](https://img.shields.io/npm/v/thesaurus-com.svg)](https://www.npmjs.com/package/thesaurus-com)
 
 ## Description
