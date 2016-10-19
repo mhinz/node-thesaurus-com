@@ -6,7 +6,8 @@
 Use [thesaurus.com](http://www.thesaurus.com/) to look up synonyms and, if
 available, antonyms.
 
-Moreover, it comes with an executable called `tcom`.
+Moreover, it comes with an executable called `tcom`, which can be used to start
+a search from the shell. The output is either plain-text (by default) or JSON.
 
 ## Installation
 
@@ -14,7 +15,35 @@ Moreover, it comes with an executable called `tcom`.
 $ npm install -g thesaurus-com
 ```
 
+Or install it into the current directory, so you can play around with it:
+
+```
+$ npm install --save thesaurus-com
+```
+
+(The executable can then be found at `./node_modules/.bin/tcom`.)
+
 ## Usage
+
+```javascript
+var tcom = require('thesaurus-com');
+
+console.log(tcom.search('never'));
+
+// { synonyms:
+//   [ 'at no time',
+//     'don\'t hold your breath',
+//     'forget it',
+//     'nevermore',
+//     'no way',
+//     'not at all',
+//     'not ever',
+//     'not in any way',
+//     'not in the least',
+//     'not on your life',
+//     'not under any condition' ],
+//  antonyms: [ 'always', 'forever' ] }
+```
 
 ```
 $ tcom always
