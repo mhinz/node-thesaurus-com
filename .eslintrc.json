@@ -3,7 +3,6 @@
         "sourceType": "module"
     },
     "env": {
-        "es6": true,
         "node": true,
         "mocha": true
     },
@@ -21,7 +20,6 @@
             "error",
             "always"
         ],
-        "no-var": 2,
         "eqeqeq": 2,
         "no-console": 0
     }

@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-const tcom = require('./index.js');
+var tcom = require('./index.js');
 
 function help_me() {
-    const path = require('path');
+    var path = require('path');
     console.log([
         'usage: ' + path.basename(process.argv[1]) + ' [-j|-h] <query>',
         '',
@@ -16,8 +16,8 @@ function help_me() {
     process.exit(1);
 }
 
-let args = process.argv.slice(2);
-let output_json = 0;
+var args = process.argv.slice(2);
+var output_json = 0;
 
 switch (args[0]) {
 case '-j':
@@ -34,7 +34,7 @@ if (args.length === 0) {
     help_me();
 }
 
-const match = tcom.search(args.join(' '));
+var match = tcom.search(args.join(' '));
 
 if (output_json) {
     console.log(JSON.stringify(match));
