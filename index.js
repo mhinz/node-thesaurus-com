@@ -3,18 +3,36 @@
 var request = require('request');
 var cheerio = require('cheerio');
 
+function help_me() {
+    var path = require('path');
+    console.log([
+            'usage: ' + path.basename(process.argv[1]) + ' [-j|-h] <query>',
+            '',
+            'options:',
+            '',
+            '  -j|--json    return JSON',
+            '  -h|--help    show this help',
+            ''
+    ].join('\n'));
+    process.exit(1);
+}
+
 var args = process.argv.slice(2);
 var output_json = 0;
 
-if (args[0] == '-j') {
-    output_json = 1;
-    args.shift();
+switch (args[0]) {
+    case '-j':
+    case '--json':
+        output_json = 1;
+        args.shift();
+        break;
+    case '-h':
+    case '--help':
+        help_me();
 }
 
 if (args.length == 0) {
-    var path = require('path');
-    console.log('usage: ' + path.basename(process.argv[1]) + ' <query>');
-    process.exit(1);
+    help_me();
 }
 
 var url = 'http://www.thesaurus.com/browse/' + encodeURIComponent(args.join(' '));
