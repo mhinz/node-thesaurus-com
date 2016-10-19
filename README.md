@@ -8,7 +8,7 @@ available, antonyms.
 ## Installation
 
 ```
-$ npm install thesaurus-com
+$ npm install -g thesaurus-com
 ```
 
 ## Usage
