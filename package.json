@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "cheerio": "^0.22.0",
-    "request": "^2.75.0"
+    "sync-request": "^3.0.1"
   },
   "devDependencies": {},
   "scripts": {

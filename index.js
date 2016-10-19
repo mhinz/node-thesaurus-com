@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-var request = require('request');
+var request = require('sync-request');
 var cheerio = require('cheerio');
 
 function help_me() {
@@ -37,28 +37,27 @@ if (args.length == 0) {
 
 var url = 'http://www.thesaurus.com/browse/' + encodeURIComponent(args.join(' '));
 
-request(url, function(err, resp, body){
-    $ = cheerio.load(body, { ignoreWhitespace: true });
+var res = request('GET', url)
+$ = cheerio.load(res.getBody(), { ignoreWhitespace: true });
 
-    var synonyms = $('div.relevancy-list ul li a span.text');
-    var synonyms = synonyms.map(function(_i, _element){
-        return $(this).text();
-    }).get().sort();
+var synonyms = $('div.relevancy-list ul li a span.text');
+var synonyms = synonyms.map(function(_i, _element){
+    return $(this).text();
+}).get().sort();
 
-    var antonyms = $('div.list-holder ul li a span.text');
-    var antonyms = antonyms.map(function(_i, _element){
-        return $(this).text();
-    }).get().sort();
+var antonyms = $('div.list-holder ul li a span.text');
+var antonyms = antonyms.map(function(_i, _element){
+    return $(this).text();
+}).get().sort();
 
-    if (output_json) {
-        console.log(JSON.stringify({
-            synonyms: synonyms,
-            antonyms: antonyms
-        }));
-    } else {
-        console.log('Synonyms: ' + synonyms.join(', '));
-        if (antonyms.length > 0) {
-            console.log('Antonyms: ' + antonyms.join(', '));
-        }
+if (output_json) {
+    console.log(JSON.stringify({
+        synonyms: synonyms,
+        antonyms: antonyms
+    }));
+} else {
+    console.log('Synonyms: ' + synonyms.join(', '));
+    if (antonyms.length > 0) {
+        console.log('Antonyms: ' + antonyms.join(', '));
     }
-});
+}
