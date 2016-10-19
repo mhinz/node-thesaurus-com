@@ -3,9 +3,13 @@ var cheerio = require('cheerio');
 
 function search(query) {
     var url = 'http://www.thesaurus.com/browse/' + encodeURIComponent(query);
-    var res = request('GET', url);
+    var req = request('GET', url)
 
-    $ = cheerio.load(res.getBody(), { ignoreWhitespace: true });
+    if (req.statusCode !== 200) {
+        return {synonyms: [], antonyms: []};
+    }
+
+    $ = cheerio.load(req.getBody(), { ignoreWhitespace: true });
 
     var synonyms = $('div.relevancy-list ul li a span.text');
     var synonyms = synonyms.map(function(_i, _element){
