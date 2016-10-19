@@ -23,8 +23,11 @@
   },
   "keywords": [
     "thesaurus",
+    "dictionary",
+    "english",
     "synonym",
-    "antonym"
+    "antonym",
+    "word"
   ],
   "author": "Marco Hinz",
   "license": "MIT",

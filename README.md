@@ -6,6 +6,8 @@
 Use [thesaurus.com](http://www.thesaurus.com/) to look up synonyms and, if
 available, antonyms.
 
+Moreover, it comes with an executable called `tcom`.
+
 ## Installation
 
 ```
