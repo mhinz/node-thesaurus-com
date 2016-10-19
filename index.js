@@ -1,9 +1,11 @@
-var request = require('sync-request');
-var cheerio = require('cheerio');
+/*global $:true */
+
+const request = require('sync-request');
+const cheerio = require('cheerio');
 
 function search(query) {
-    var url = 'http://www.thesaurus.com/browse/' + encodeURIComponent(query);
-    var req = request('GET', url)
+    const url = 'http://www.thesaurus.com/browse/' + encodeURIComponent(query);
+    const req = request('GET', url);
 
     if (req.statusCode !== 200) {
         return {synonyms: [], antonyms: []};
@@ -11,13 +13,13 @@ function search(query) {
 
     $ = cheerio.load(req.getBody(), { ignoreWhitespace: true });
 
-    var synonyms = $('div.relevancy-list ul li a span.text');
-    var synonyms = synonyms.map(function(_i, _element){
+    let synonyms = $('div.relevancy-list ul li a span.text');
+    synonyms = synonyms.map(function() {
         return $(this).text();
     }).get().sort();
 
-    var antonyms = $('div.list-holder ul li a span.text');
-    var antonyms = antonyms.map(function(_i, _element){
+    let antonyms = $('div.list-holder ul li a span.text');
+    antonyms = antonyms.map(function() {
         return $(this).text();
     }).get().sort();
 
@@ -27,4 +29,4 @@ function search(query) {
     };
 }
 
-exports.search = search
+exports.search = search;

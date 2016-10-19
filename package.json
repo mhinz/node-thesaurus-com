@@ -11,10 +11,11 @@
     "sync-request": "^3.0.1"
   },
   "devDependencies": {
+    "eslint": "^3.8.1",
     "mocha": "^3.1.2"
   },
   "scripts": {
-    "test": "mocha test.js"
+    "test": "eslint *.js && mocha test.js"
   },
   "repository": {
     "type": "git",
