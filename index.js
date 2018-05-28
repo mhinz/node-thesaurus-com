@@ -1,24 +1,22 @@
-/*global $:true */
-
-var request = require('sync-request');
-var cheerio = require('cheerio');
+const request = require('sync-request');
+const cheerio = require('cheerio');
 
 function search(query) {
-    var url = 'http://www.thesaurus.com/browse/' + encodeURIComponent(query);
-    var req = request('GET', url);
+    const url = 'http://www.thesaurus.com/browse/' + encodeURIComponent(query);
+    const req = request('GET', url);
 
     if (req.statusCode !== 200) {
         return {synonyms: [], antonyms: []};
     }
 
-    $ = cheerio.load(req.getBody(), { ignoreWhitespace: true });
+    const $ = cheerio.load(req.getBody(), { ignoreWhitespace: true });
 
-    var synonyms = $('div.relevancy-list ul li a span.text');
+    let synonyms = $('body #loadingContainer #root div section div h2:contains("Synonyms ")').parent().parent().find('ul li span a');
     synonyms = synonyms.map(function() {
         return $(this).text();
     }).get().sort();
 
-    var antonyms = $('div.list-holder ul li a span.text');
+    let antonyms = $('body #loadingContainer #root div section div h2:contains("Antonyms ")').parent().parent().find('ul li span a');
     antonyms = antonyms.map(function() {
         return $(this).text();
     }).get().sort();

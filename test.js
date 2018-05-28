@@ -1,8 +1,8 @@
-var assert = require('assert');
-var tcom = require('./index.js');
+const assert = require('assert');
+const tcom = require('./index.js');
 
-var output_for_never = {
-    synonyms: ["at no time", "don\'t hold your breath"],
+const output_for_never = {
+    synonyms: ["at no time", "forget it"],
     antonyms: ["always", "forever"]
 };
 
