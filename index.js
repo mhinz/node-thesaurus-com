@@ -2,7 +2,7 @@ const request = require('sync-request');
 const cheerio = require('cheerio');
 
 function search(query) {
-    const url = 'http://www.thesaurus.com/browse/' + encodeURIComponent(query);
+    const url = 'https://www.thesaurus.com/browse/' + encodeURIComponent(query);
     const req = request('GET', url);
 
     if (req.statusCode !== 200) {
