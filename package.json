@@ -7,12 +7,12 @@
     "tcom": "./tcom.js"
   },
   "dependencies": {
-    "cheerio": "^0.22.0",
-    "sync-request": "^3.0.1"
+    "cheerio": "1.0.0-rc.2",
+    "sync-request": "6.0.0"
   },
   "devDependencies": {
-    "eslint": "^3.8.1",
-    "mocha": "^3.1.2"
+    "eslint": "5.10.0",
+    "mocha": "5.2.0"
   },
   "scripts": {
     "test": "eslint *.js && mocha test.js"
