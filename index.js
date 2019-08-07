@@ -11,12 +11,12 @@ function search(query) {
 
     const $ = cheerio.load(req.getBody(), { ignoreWhitespace: true });
 
-    let synonyms = $('body #loadingContainer #root div section div h2:contains("Synonyms ")').parent().parent().find('ul li span a');
+    let synonyms = $('body #loadingContainer #root div section div p:contains("Synonyms ")').parent().parent().find('ul li span a');
     synonyms = synonyms.map(function() {
         return $(this).text();
     }).get().sort();
 
-    let antonyms = $('body #loadingContainer #root div section div h2:contains("Antonyms ")').parent().parent().find('ul li span a');
+    let antonyms = $('body #loadingContainer #root div section div p:contains("Antonyms ")').parent().parent().find('ul li span a');
     antonyms = antonyms.map(function() {
         return $(this).text();
     }).get().sort();
