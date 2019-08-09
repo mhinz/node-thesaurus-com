@@ -1,18 +1,18 @@
 {
   "name": "thesaurus-com",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "Lookup synonyms and antonyms from thesaurus.com.",
   "main": "index.js",
   "bin": {
     "tcom": "./tcom.js"
   },
   "dependencies": {
-    "cheerio": "1.0.0-rc.2",
-    "sync-request": "6.0.0"
+    "cheerio": "^1.0.0-rc.3",
+    "sync-request": "^6.0.0"
   },
   "devDependencies": {
-    "eslint": "5.10.0",
-    "mocha": "5.2.0"
+    "eslint": "^6.0.0",
+    "mocha": "^6.0.0"
   },
   "scripts": {
     "test": "eslint *.js && mocha test.js"
